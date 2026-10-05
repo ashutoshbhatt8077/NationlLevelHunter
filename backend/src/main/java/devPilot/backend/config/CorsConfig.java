@@ -18,7 +18,7 @@ public class CorsConfig {
             @Value("${app.cors.allowed-origins}") String allowedOrigins) {
         CorsConfiguration config = new CorsConfiguration();
         List<String> origins = Arrays.stream(allowedOrigins.split(","))
-                .map(s -> s.trim())
+                .map(String::trim)
                 .filter(s -> !s.isEmpty())
                 .toList();
         config.setAllowedOrigins(origins);

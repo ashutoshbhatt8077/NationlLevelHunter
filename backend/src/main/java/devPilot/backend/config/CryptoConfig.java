@@ -13,6 +13,6 @@ public class CryptoConfig {
     TextEncryptor tokenEncryptor(
             @Value("${app.token-encryptor-password}") String password,
             @Value("${app.token-encryptor-salt}") String salt) {
-        return Encryptors.delux(password, salt);
+        return Encryptors.text(password, salt);
     }
 }

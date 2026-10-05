@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
+import org.springframework.ai.document.Document;
 import org.springframework.ai.vectorstore.SearchRequest;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.ai.vectorstore.filter.FilterExpressionBuilder;
@@ -37,7 +38,7 @@ public class CodeContextRetriever {
                 .toList();
 
         var contextText = documents.stream()
-                .map(document -> document.getText())
+                .map(Document::getText)
                 .collect(Collectors.joining("\n\n---\n\n"));
 
         if (contextText.isBlank()) {
